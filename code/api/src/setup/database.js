@@ -18,6 +18,10 @@ const connection = new Sequelize(databaseConfigEnv.database, databaseConfigEnv.u
 // Test connection
 console.info('SETUP - Connecting database...')
 
+if(NODE_ENV=='test') {
+connection
+  .authenticate()
+}
 connection
   .authenticate()
   .then(() => {
